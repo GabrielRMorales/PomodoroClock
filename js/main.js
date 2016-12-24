@@ -1,4 +1,8 @@
 $(document).ready(function(){
+/*As of now, this currently needs the timer to be functioning properly.
+Also needs to start a break timer once the main timer hits 0
+*/
+var timerOff=true;
 //Break value controls
 $("#addBreak").click(function(){
 	var break_value=$("#break").html();
@@ -14,46 +18,78 @@ $("#subtractBreak").click(function(){
 $("#addSession").click(function(){
 	var session_value=$("#session").html();
 	$("#session").html(parseInt(session_value)+1);
-	$("#timer").html($("#session").html());
+	if (timerOff==true){
+	$("#minutes").html($("#session").html());
+}
 });
 $("#subtractSession").click(function(){
 	var session_value=$("#session").html();
 	if (parseInt(session_value)>1){
 	$("#session").html(parseInt(session_value)-1);
-	$("#timer").html($("#session").html());
+	if (timerOff==true){
+	$("#minutes").html($("#session").html());
 	}
+}
 });
 
 //Timer controls
+
+
+var interval;
 var counter=0;
 $("#timer").click(function(){
 	var minutes=$("#minutes").html();
 	var seconds=$("#seconds").html();
-	
 	minutes=parseInt(minutes);
 	seconds=parseInt(seconds);
-	if (counter==0){
-		countdownInitiation();
-		countdown();
-	}
-	else if (counter>0){
-		countdown();
-	}
-	function countdownInitiation(){
-	//var currentSeconds=$("#seconds").html();
-	$("#seconds").html(59);
-	$("#minutes").html(minutes-=1);
 	counter++;
-	/*if (currentSeconds>0){	
-	$("#minutes").html(minutes-=1);
+function countdown(){
+	var seconds=$("#seconds").html();
+	var minutes=$("#minutes").html();
+	seconds=parseInt(seconds);
+	minutes=parseInt(minutes);
+	
 	$("#seconds").html(seconds-=1);
-	}*/
+	//$("#minutes").html(minutes-=1);
+	if (seconds==0){
+	 	$("#minutes").html(minutes-=1);
+	 	$("#seconds").html(59);
+	 }
+	 //fixing seconds display
+	 if (parseInt($("#seconds").html())<10){
+	$("#colon").html(":0");
 	}
-	function countdown(){
-	$("#seconds").html(seconds-=1);
-	$("#minutes").html(minutes-=1);
+	else {
+		$("#colon").html(":");
 	}
-	//setInterval(,1000);
+}
+function countdownOn(){
+	timerOff=false;
+	countdown();
+	interval=setInterval(countdown,1000);
+	return false;
+}
+function countdownOff(){
+	timerOff=true;
+	clearInterval(interval);
+	return false;
+}
+//function ends here
+//for initial click
+	if (counter==1){
+		$("#seconds").html(59);
+		$("#minutes").html(minutes-=1);
+		countdownOn();
+		}
+	//start/restart timer
+	else if (counter%2==1){
+		countdownOn();
+	}
+	//pause timer
+	else if (counter%2==0){
+		countdownOff();
+	}
 });
+
 
 });
