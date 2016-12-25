@@ -34,9 +34,9 @@ $("#subtractSession").click(function(){
 
 //Timer controls
 
-
 var interval;
 var counter=0;
+var isBreak=false;
 $("#timer").click(function(){
 	var minutes=$("#minutes").html();
 	var seconds=$("#seconds").html();
@@ -50,8 +50,26 @@ function countdown(){
 	minutes=parseInt(minutes);
 	
 	$("#seconds").html(seconds-=1);
-	//$("#minutes").html(minutes-=1);
-	if (seconds==0){
+	//Set Break value
+	if (seconds==0&&minutes==0){
+		if (isBreak==false){
+			alert("Your break has started!");
+		var break_value=$("#break").html();
+		$("#session_title").html("Break");
+		$("#minutes").html(break_value-1);
+		$("#seconds").html(59);
+		isBreak=true;
+		}
+		else {
+			window.location.reload();
+		/*$("#session_title").html("Session");
+		countdownOff();
+		alert("Your break is up. Back to work!");
+		isBreak=false;*/
+		}	
+	}
+	//
+	else if (seconds==0){
 	 	$("#minutes").html(minutes-=1);
 	 	$("#seconds").html(59);
 	 }
