@@ -17,6 +17,7 @@ $("#subtractBreak").click(function(){
 //Session value controls
 $("#addSession").click(function(){
 	var session_value=$("#session").html();
+	
 	$("#session").html(parseInt(session_value)+1);
 	if (timerOff==true){
 	$("#minutes").html($("#session").html());

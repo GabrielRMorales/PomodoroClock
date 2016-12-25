@@ -97,8 +97,34 @@ textarea {
 
 body {
   
-    background-color: gray;
+    background-color: #282828 ;
     margin-left: 10px;
+    color: white;
+    font-family: Calibri;
+    text-shadow: 2px 2px orange;
+}
+h1{
+    border-top: 1px dashed white;
+    border-bottom: 1px dashed white;
+    display: inline;
+    color:green;
+}
+main{    
+    margin: 30px auto;
+    text-align: center;
+    border-radius: 50%;
+    background: linear-gradient(to top right, red, #ff6347);
+    width: 400px;
+    height: 400px;
+}
+button {
+    color: black;
+}
+#break_length{
+    padding-top: 25px;
+}
+#session_space{
+    padding-bottom: 25px;
 }
 nav {
 list-style-type:none;
