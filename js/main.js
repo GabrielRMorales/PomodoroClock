@@ -101,7 +101,7 @@ function countdownOff(){
 //function ends here
 //for initial click
 	if (counter==1){
-		$("#seconds").html(59);
+		$("#seconds").html(60);
 		$("#minutes").html(minutes-=1);
 		countdownOn();
 		}
