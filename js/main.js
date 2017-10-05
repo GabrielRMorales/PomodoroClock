@@ -1,9 +1,6 @@
 $(document).ready(function(){
 
-var timerOff=true;
-var interval;
-var counter=0;
-var isBreak=false;
+var timerOff=true, interval, counter=0, isBreak=false;
 //Break value controls
 $("#addBreak").click(function(){
 	var break_value=$("#break").html();
@@ -41,14 +38,12 @@ $("#subtractSession").click(function(){
 
 
 $("#timer").click(function(){
-	var minutes=$("#minutes").html();
-	var seconds=$("#seconds").html();
+	var minutes=$("#minutes").html(), seconds=$("#seconds").html();
 	minutes=parseInt(minutes);
 	seconds=parseInt(seconds);
 	counter++;
 function countdown(){
-	var seconds=$("#seconds").html();
-	var minutes=$("#minutes").html();
+	var seconds=$("#seconds").html(), minutes=$("#minutes").html();
 	seconds=parseInt(seconds);
 	minutes=parseInt(minutes);
 	/*console.log("Seconds: "+seconds);
