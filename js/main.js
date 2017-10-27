@@ -110,5 +110,8 @@ function countdownOff(){
 	}
 });
 
+$("#reset").click(function(){
+	window.location.reload();
+});
 
 });
