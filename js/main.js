@@ -13,6 +13,7 @@ $("#subtractBreak").click(function(){
 	}
 });
 //Session value controls
+
 $("#addSession").click(function(){
 	if (isBreak==false){
 	var session_value=$("#session").html();	
@@ -36,51 +37,38 @@ $("#subtractSession").click(function(){
 
 //Timer controls
 
-
 $("#timer").click(function(){
 	var minutes=$("#minutes").html(), seconds=$("#seconds").html();
 	minutes=parseInt(minutes);
 	seconds=parseInt(seconds);
 	counter++;
-function countdown(){
-	var seconds=$("#seconds").html(), minutes=$("#minutes").html();
-	seconds=parseInt(seconds);
-	minutes=parseInt(minutes);
-	/*console.log("Seconds: "+seconds);
-	console.log("Minutes: "+minutes);
-	console.log("break: "+isBreak);*/
-	$("#seconds").html(seconds-=1);
-	//Set Break value
-	if (seconds==0&&minutes==0){
-		if (isBreak==false){
-		alert("Your break has started!");
-		var break_value=$("#break").html();
-		$("#session_title").html("Break");
-		$("#minutes").html(break_value-1);
-		$("#seconds").html(59);
-		isBreak=true;
-			}
-		else {
-		alert("break over");
-		window.location.reload();
-		/*$("#session_title").html("Session");
-		countdownOff();
-		alert("Your break is up. Back to work!");
-		isBreak=false;*/
-		}	
-	}
+	function countdown(){
+		var seconds=$("#seconds").html(), minutes=$("#minutes").html();
+		seconds=parseInt(seconds);
+		minutes=parseInt(minutes);
+		$("#seconds").html(seconds-=1);
+		//Set Break value
+		if (seconds==0&&minutes==0){
+			if (isBreak==false){
+			alert("Your break has started!");
+			var break_value=$("#break").html();
+			$("#session_title").html("Break");
+			$("#minutes").html(break_value-1);
+			$("#seconds").html(59);
+			isBreak=true;
+				}
+			else {
+			alert("break over");
+			window.location.reload();
+			}	
+		}
 	//
 	else if (seconds==0){
 	 	$("#minutes").html(minutes-=1);
 	 	$("#seconds").html(59);
 	 }
 	 //fixing seconds display
-	 if (parseInt($("#seconds").html())<10){
-	$("#colon").html(":0");
-	}
-	else {
-		$("#colon").html(":");
-	}
+	 parseInt($("#seconds").html())<10 ? $("#colon").html(":0") : $("#colon").html(":");
 }
 function countdownOn(){
 	timerOff=false;
